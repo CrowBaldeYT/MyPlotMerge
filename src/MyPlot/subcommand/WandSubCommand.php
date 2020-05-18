@@ -34,7 +34,7 @@ class WandCommand extends SubCommand
 	 */
 	public function canUse(CommandSender $sender): bool
 	{
-		return ($sender instanceof Player) and $sender->hasPermission("myplot.command.rand");
+		return ($sender instanceof Player) and $sender->hasPermission("myplot.command.wand");
 	}
 	/**
 	 * @param Player $sender
@@ -49,13 +49,13 @@ class WandCommand extends SubCommand
 			$sender->sendMessage($prefix . TF::GRAY . "Du befindest dich nicht auf einem Grundstück.");
 			return true;
 		}
-		if($plot->owner !== $sender->getName() and !$sender->hasPermission("myplot.admin.rand")) {
+		if($plot->owner !== $sender->getName() and !$sender->hasPermission("myplot.admin.wand")) {
 			$sender->sendMessage($prefix . TF::GRAY . "Dieses Grundstück gehört dir nicht.");
 			return true;
 		}
 		$merge = new Config($this->getPlugin()->getDataFolder() . "merge_" . $sender->getLevel()->getName() . ".yml", 2);
 		if ($merge->exists("$plot")) {
-			$sender->sendMessage($prefix . TF::GRAY . "§cDu kannst nicht die wand von einem Merge verändern!");
+			$sender->sendMessage($prefix . TF::GRAY . "§cDu kannst nicht die Wand von einem Merge verändern!");
 			return true;
 		}
 
