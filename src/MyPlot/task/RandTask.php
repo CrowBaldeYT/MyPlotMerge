@@ -68,6 +68,7 @@ class RandTask extends Task
 
                 $blocks++;
                 if ($blocks >= 500) {
+                    $this->setHandler();
                     $this->plugin->getScheduler()->scheduleDelayedTask($this, 1);
                     return;
                 }
